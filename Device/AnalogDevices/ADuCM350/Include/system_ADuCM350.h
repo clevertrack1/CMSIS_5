@@ -1,7 +1,7 @@
 /**************************************************************************//**
- * @file     system_<Device>.h
+ * @file     system_ADuCM350.h
  * @brief    CMSIS Cortex-M# Device Peripheral Access Layer Header File for
- *           Device <Device>
+ *           Device ADuCM350
  * @version  V5.00
  * @date     10. January 2018
  ******************************************************************************/
@@ -23,8 +23,8 @@
  * limitations under the License.
  */
 
-#ifndef SYSTEM_<Device>_H   /* ToDo: replace '<Device>' with your device name */
-#define SYSTEM_<Device>_H
+#ifndef SYSTEM_ADuCM350_H   
+#define SYSTEM_ADuCM350_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -55,4 +55,4 @@ extern void SystemCoreClockUpdate (void);
 }
 #endif
 
-#endif /* SYSTEM_<Device>_H */
+#endif /* SYSTEM_ADuCM350_H */
