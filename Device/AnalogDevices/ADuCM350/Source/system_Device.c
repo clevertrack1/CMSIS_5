@@ -1,7 +1,7 @@
 /**************************************************************************//**
- * @file     system_<Device>.c
+ * @file     system_ADuCM350.c
  * @brief    CMSIS Cortex-M# Device Peripheral Access Layer Source File for
- *           Device <Device>
+ *           Device ADuCM350
  * @version  V5.00
  * @date     10. January 2018
  ******************************************************************************/
@@ -24,17 +24,16 @@
  */
 
 #include <stdint.h>
-#include "<Device>.h"
+#include "ADuCM350.h"
 
 
 /*----------------------------------------------------------------------------
   Define clocks
  *----------------------------------------------------------------------------*/
-/* ToDo: add here your necessary defines for device initialization
-         following is an example for different system frequencies */
-#define XTAL            (12000000U)       /* Oscillator frequency             */
+/* defines for device initialization system frequencies */
+#define XTAL            (16000000U)       /* Oscillator frequency             */
 
-#define SYSTEM_CLOCK    (5 * XTAL)
+#define SYSTEM_CLOCK    (1 * XTAL)
 
 
 /*----------------------------------------------------------------------------

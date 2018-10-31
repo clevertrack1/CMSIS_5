@@ -96,16 +96,60 @@ void DebugMon_Handler       (void) __attribute__ ((weak, alias("Default_Handler"
 void PendSV_Handler         (void) __attribute__ ((weak, alias("Default_Handler")));
 void SysTick_Handler        (void) __attribute__ ((weak, alias("Default_Handler")));
 
-void Interrupt0_Handler     (void) __attribute__ ((weak, alias("Default_Handler")));
-void Interrupt1_Handler     (void) __attribute__ ((weak, alias("Default_Handler")));
-void Interrupt2_Handler     (void) __attribute__ ((weak, alias("Default_Handler")));
-void Interrupt3_Handler     (void) __attribute__ ((weak, alias("Default_Handler")));
-void Interrupt4_Handler     (void) __attribute__ ((weak, alias("Default_Handler")));
-void Interrupt5_Handler     (void) __attribute__ ((weak, alias("Default_Handler")));
-void Interrupt6_Handler     (void) __attribute__ ((weak, alias("Default_Handler")));
-void Interrupt7_Handler     (void) __attribute__ ((weak, alias("Default_Handler")));
-void Interrupt8_Handler     (void) __attribute__ ((weak, alias("Default_Handler")));
-void Interrupt9_Handler     (void) __attribute__ ((weak, alias("Default_Handler")));
+void  WUT_Handler             (void) __attribute__ ((weak, alias("Default_Handler")));
+void  EINT0_Handler           (void) __attribute__ ((weak, alias("Default_Handler")));
+void  EINT1_Handler           (void) __attribute__ ((weak, alias("Default_Handler")));
+void  EINT2_Handler           (void) __attribute__ ((weak, alias("Default_Handler")));
+void  EINT3_Handler           (void) __attribute__ ((weak, alias("Default_Handler")));
+void  EINT4_Handler           (void) __attribute__ ((weak, alias("Default_Handler")));
+void  EINT5_Handler           (void) __attribute__ ((weak, alias("Default_Handler")));
+void  EINT6_Handler           (void) __attribute__ ((weak, alias("Default_Handler")));
+void  EINT7_Handler           (void) __attribute__ ((weak, alias("Default_Handler")));
+void  EINT8_Handler           (void) __attribute__ ((weak, alias("Default_Handler")));
+void  WDT_Handler             (void) __attribute__ ((weak, alias("Default_Handler")));
+void  TIMER0_Handler          (void) __attribute__ ((weak, alias("Default_Handler")));
+void  TIMER1_Handler          (void) __attribute__ ((weak, alias("Default_Handler")));
+void  FLASH0_Handler          (void) __attribute__ ((weak, alias("Default_Handler")));
+void  UART_Handler            (void) __attribute__ ((weak, alias("Default_Handler")));
+void  SPI0_Handler            (void) __attribute__ ((weak, alias("Default_Handler")));
+void  SPIH_Handler            (void) __attribute__ ((weak, alias("Default_Handler")));
+void  I2CS_Handler            (void) __attribute__ ((weak, alias("Default_Handler")));
+void  I2CM_Handler            (void) __attribute__ ((weak, alias("Default_Handler")));
+void  DMA_ERR_Handler         (void) __attribute__ ((weak, alias("Default_Handler")));
+void  DMA_SPIH_TX_Handler     (void) __attribute__ ((weak, alias("Default_Handler")));
+void  DMA_SPIH_RX_Handler     (void) __attribute__ ((weak, alias("Default_Handler")));
+void  DMA_SPI0_TX_Handler     (void) __attribute__ ((weak, alias("Default_Handler")));
+void  DMA_SPI0_RX_Handler     (void) __attribute__ ((weak, alias("Default_Handler")));
+void  DMA_SPI1_TX_Handler     (void) __attribute__ ((weak, alias("Default_Handler")));
+void  DMA_SPI1_RX_Handler     (void) __attribute__ ((weak, alias("Default_Handler")));
+void  DMA_UART_TX_Handler     (void) __attribute__ ((weak, alias("Default_Handler")));
+void  DMA_UART_RX_Handler     (void) __attribute__ ((weak, alias("Default_Handler")));
+void  DMA_I2CS_TX_Handler     (void) __attribute__ ((weak, alias("Default_Handler")));
+void  DMA_I2CS_RX_Handler     (void) __attribute__ ((weak, alias("Default_Handler")));
+void  DMA_I2CM_Handler        (void) __attribute__ ((weak, alias("Default_Handler")));
+void  DMA_AFE_TX_Handler      (void) __attribute__ ((weak, alias("Default_Handler")));
+void  DMA_AFE_RX_Handler      (void) __attribute__ ((weak, alias("Default_Handler")));
+void  DMA_CRC_Handler         (void) __attribute__ ((weak, alias("Default_Handler")));
+void  DMA_PDI_Handler         (void) __attribute__ ((weak, alias("Default_Handler")));
+void  DMA_I2S_Handler         (void) __attribute__ ((weak, alias("Default_Handler")));
+void  USB_WAKEUP_Handler      (void) __attribute__ ((weak, alias("Default_Handler")));
+void  USB_CNTL_Handler        (void) __attribute__ ((weak, alias("Default_Handler")));
+void  USB_DMA_Handler         (void) __attribute__ ((weak, alias("Default_Handler")));
+void  I2S_Handler             (void) __attribute__ ((weak, alias("Default_Handler")));
+void  TIMER2_Handler          (void) __attribute__ ((weak, alias("Default_Handler")));
+void  SPI1_Handler            (void) __attribute__ ((weak, alias("Default_Handler")));
+void  RTC_Handler             (void) __attribute__ ((weak, alias("Default_Handler")));
+void  BEEP_Handler            (void) __attribute__ ((weak, alias("Default_Handler")));
+void  LCD_Handler             (void) __attribute__ ((weak, alias("Default_Handler")));
+void  GPIOA_Handler           (void) __attribute__ ((weak, alias("Default_Handler")));
+void  GPIOB_Handler           (void) __attribute__ ((weak, alias("Default_Handler")));
+void  AFE_CAPTURE_Handler     (void) __attribute__ ((weak, alias("Default_Handler")));
+void  AFE_GENERATE_Handler    (void) __attribute__ ((weak, alias("Default_Handler")));
+void  AFE_CMD_FIFO_Handler    (void) __attribute__ ((weak, alias("Default_Handler")));
+void  AFE_DATA_FIFO_Handler   (void) __attribute__ ((weak, alias("Default_Handler")));
+void  GP_FLASH_Handler        (void) __attribute__ ((weak, alias("Default_Handler")));
+void  RAND_Handler            (void) __attribute__ ((weak, alias("Default_Handler")));
+void  PDI_Handler     	      (void) __attribute__ ((weak, alias("Default_Handler")));
 
 
 /*----------------------------------------------------------------------------
@@ -131,17 +175,61 @@ extern const pFunc __Vectors[240];
   SysTick_Handler,                          /*  -1 SysTick Handler */
 
   /* Interrupts */
-  Interrupt0_Handler,                       /*   0 Interrupt 0 */
-  Interrupt1_Handler,                       /*   1 Interrupt 1 */
-  Interrupt2_Handler,                       /*   2 Interrupt 2 */
-  Interrupt3_Handler,                       /*   3 Interrupt 3 */
-  Interrupt4_Handler,                       /*   4 Interrupt 4 */
-  Interrupt5_Handler,                       /*   5 Interrupt 5 */
-  Interrupt6_Handler,                       /*   6 Interrupt 6 */
-  Interrupt7_Handler,                       /*   7 Interrupt 7 */
-  Interrupt8_Handler,                       /*   8 Interrupt 8 */
-  Interrupt9_Handler                        /*   9 Interrupt 9 */
-                                            /* Interrupts 10 .. 224 are left out */
+    WUT_Handler,                /*    0  Wake Up Timer interrupt */ 
+    EINT0_Handler,              /*    1  External Interrupt 0 */ 
+    EINT1_Handler,              /*    2  External Interrupt 1 */ 
+    EINT2_Handler,              /*    3  External Interrupt 2 */ 
+    EINT3_Handler,              /*    4  External Interrupt 3 */ 
+    EINT4_Handler,              /*    5  External Interrupt 4 */ 
+    EINT5_Handler,              /*    6  External Interrupt 5 */ 
+    EINT6_Handler,              /*    7  External Interrupt 6 */ 
+    EINT7_Handler,              /*    8  External Interrupt 7 */ 
+    EINT8_Handler,              /*    9  External Interrupt 8 */ 
+    WDT_Handler,                /*    10 WDT Interrupt */ 
+    TIMER0_Handler,             /*    11 Timer interrupt */ 
+    TIMER1_Handler,             /*    12 Timer 1 Interrupt */ 
+    FLASH0_Handler,             /*    13 Flash Controller Interrupt */ 
+    UART_Handler,               /*    14 interrupt */ 
+    SPI0_Handler,               /*    15 SPI 0 interrupt */ 
+    SPIH_Handler,               /*    16 interrupt */ 
+    I2CS_Handler,               /*    17 I2C 0 slave interrupt */ 
+    I2CM_Handler,               /*    18 I2C 0 master interrupt */ 
+    DMA_ERR_Handler,            /*    19 DMA interrupt */ 
+    DMA_SPIH_TX_Handler,        /*    20 DMA Ch 0 interrupt */ 
+    DMA_SPIH_RX_Handler,        /*    21 DMA Ch 1 interrupt */ 
+    DMA_SPI0_TX_Handler,        /*    22 DMA Ch 2 interrupt */ 
+    DMA_SPI0_RX_Handler,        /*    23 DMA Ch 3 interrupt */ 
+    DMA_SPI1_TX_Handler,        /*    24 DMA Ch 4 interrupt */ 
+    DMA_SPI1_RX_Handler,        /*    25 DMA Ch 5 interrupt */ 
+    DMA_UART_TX_Handler,        /*    26 DMA Ch 6 interrupt */ 
+    DMA_UART_RX_Handler,        /*    27 DMA Ch 7 interrupt */ 
+    DMA_I2CS_TX_Handler,        /*    28 DMA Ch 8 interrupt */ 
+    DMA_I2CS_RX_Handler,        /*    29 DMA Ch 9 interrupt */ 
+    DMA_I2CM_Handler,           /*    30 DMA Ch 10 interrupt */
+	DMA_AFE_TX_Handler,         /*    31 DMA Ch 11 interrupt */ 
+    DMA_AFE_RX_Handler,         /*    32 DMA Ch 12 interrupt */ 
+    DMA_CRC_Handler,            /*    33 DMA Ch 13 interrupt */ 
+    DMA_PDI_Handler,            /*    34 DMA Ch 14 interrupt */ 
+    DMA_I2S_Handler,            /*    35 DMA Ch 15 interrupt */ 
+    USB_WAKEUP_Handler,         /*    36 USB Wakeup interrupt */ 
+    USB_CNTL_Handler,           /*    37 USB Controller interrupt */ 
+    USB_DMA_Handler,            /*    38 USB DMA interrupt */ 
+    I2S_Handler,                /*    39 I2S interrupt */ 
+    TIMER2_Handler,             /*    40 TIMER 2 interrupt */ 
+    SPI1_Handler,               /*    42 interrupt */ 
+    RTC_Handler,                /*    43 Real Time Clock interrupt */ 
+    BEEP_Handler,               /*    45 Beep interrupt */ 
+    LCD_Handler,                /*    46 LCD Controller interrupt */ 
+    GPIOA_Handler,              /*    47 interrupt */ 
+    GPIOB_Handler,              /*    48 interrupt */ 
+    AFE_CAPTURE_Handler,        /*    50 Analog Front End Capture interrupt */ 
+    AFE_GENERATE_Handler,       /*    51 Analog Front End Generation interrupt */ 
+    AFE_CMD_FIFO_Handler,       /*    52 Analog Front End FIFO CMD interrupt */ 
+    AFE_DATA_FIFO_Handler,      /*    53 Analog Front End FIFO DATA interrupt */ 
+    GP_FLASH_Handler,           /*    55 Flash EEPROM interrupt */ 
+    RAND_Handler,               /*    58 Random Bit Generator interrupt */ 
+    PDI_Handler,                /*    59 Paraller Display Interface interrupt */ 
+                                /* Interrupts 60 .. 224 are left out */
 };
 
 

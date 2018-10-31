@@ -1,7 +1,7 @@
 ;/**************************************************************************//**
-; * @file     startup_<Device>.s
+; * @file     startup_ADuCM350.s
 ; * @brief    CMSIS Cortex-M ARMv7-M based Core Device Startup File for
-; *           Device <Device>
+; *           Device ADuCM350
 ; * @version  V5.3.1
 ; * @date     09. July 2018
 ; ******************************************************************************/
@@ -82,18 +82,62 @@ __Vectors       DCD      __initial_sp                        ;     Top of Stack
 
                 ; External Interrupts
 ; ToDo:  Add here the vectors for the device specific external interrupts handler
-                DCD      Interrupt0_Handler                  ;   0 Interrupt 0
-                DCD      Interrupt1_Handler                  ;   1 Interrupt 1
-                DCD      Interrupt2_Handler                  ;   2 Interrupt 2
-                DCD      Interrupt3_Handler                  ;   3 Interrupt 3
-                DCD      Interrupt4_Handler                  ;   4 Interrupt 4
-                DCD      Interrupt5_Handler                  ;   5 Interrupt 5
-                DCD      Interrupt6_Handler                  ;   6 Interrupt 6
-                DCD      Interrupt7_Handler                  ;   7 Interrupt 7
-                DCD      Interrupt8_Handler                  ;   8 Interrupt 8
-                DCD      Interrupt9_Handler                  ;   9 Interrupt 9
+            DCD  WUT_Handler;                /*!< 0  Wake Up Timer interrupt                                                */
+            DCD  EINT0_Handler;              /*!< 1  External Interrupt 0                                                   */
+            DCD  EINT1_Handler;              /*!< 2  External Interrupt 1                                                   */
+            DCD  EINT2_Handler;              /*!< 3  External Interrupt 2                                                   */
+            DCD  EINT3_Handler;              /*!< 4  External Interrupt 3                                                   */
+            DCD  EINT4_Handler;              /*!< 5  External Interrupt 4                                                   */
+            DCD  EINT5_Handler;              /*!< 6  External Interrupt 5                                                   */
+            DCD  EINT6_Handler;              /*!< 7  External Interrupt 6                                                   */
+            DCD  EINT7_Handler;              /*!< 8  External Interrupt 7                                                   */
+            DCD  EINT8_Handler;              /*!< 9  External Interrupt 8                                                   */
+            DCD  WDT_Handler;                /*!< 10 WDT Interrupt                                                          */
+            DCD  TIMER0_Handler;             /*!< 11 Timer interrupt                                                        */
+            DCD  TIMER1_Handler;             /*!< 12 Timer 1 Interrupt                                                      */
+            DCD  FLASH0_Handler;             /*!< 13 Flash Controller Interrupt                                             */
+            DCD  UART_Handler;               /*!< 14 interrupt                                                              */
+            DCD  SPI0_Handler;               /*!< 15 SPI 0 interrupt                                                        */
+            DCD  SPIH_Handler;               /*!< 16 interrupt                                                              */
+            DCD  I2CS_Handler;               /*!< 17 I2C 0 slave interrupt                                                  */
+            DCD  I2CM_Handler;               /*!< 18 I2C 0 master interrupt                                                 */
+            DCD  DMA_ERR_Handler;            /*!< 19 DMA interrupt                                                          */
+            DCD  DMA_SPIH_TX_Handler;        /*!< 20 DMA Ch 0 interrupt                                                     */
+            DCD  DMA_SPIH_RX_Handler;        /*!< 21 DMA Ch 1 interrupt                                                     */
+            DCD  DMA_SPI0_TX_Handler;        /*!< 22 DMA Ch 2 interrupt                                                     */
+            DCD  DMA_SPI0_RX_Handler;        /*!< 23 DMA Ch 3 interrupt                                                     */
+            DCD  DMA_SPI1_TX_Handler;        /*!< 24 DMA Ch 4 interrupt                                                     */
+            DCD  DMA_SPI1_RX_Handler;        /*!< 25 DMA Ch 5 interrupt                                                     */
+            DCD  DMA_UART_TX_Handler;        /*!< 26 DMA Ch 6 interrupt                                                     */
+            DCD  DMA_UART_RX_Handler;        /*!< 27 DMA Ch 7 interrupt                                                     */
+            DCD  DMA_I2CS_TX_Handler;        /*!< 28 DMA Ch 8 interrupt                                                     */
+            DCD  DMA_I2CS_RX_Handler;        /*!< 29 DMA Ch 9 interrupt                                                     */
+            DCD  DMA_I2CM_Handler;           /*!< 30 DMA Ch 10 interrupt                                                    */
+            DCD  DMA_AFE_TX_Handler;         /*!< 31 DMA Ch 11 interrupt                                                    */
+            DCD  DMA_AFE_RX_Handler;         /*!< 32 DMA Ch 12 interrupt                                                    */
+            DCD  DMA_CRC_Handler;            /*!< 33 DMA Ch 13 interrupt                                                    */
+            DCD  DMA_PDI_Handler;            /*!< 34 DMA Ch 14 interrupt                                                    */
+            DCD  DMA_I2S_Handler;            /*!< 35 DMA Ch 15 interrupt                                                    */
+            DCD  USB_WAKEUP_Handler;         /*!< 36 USB Wakeup interrupt                                                   */
+            DCD  USB_CNTL_Handler;           /*!< 37 USB Controller interrupt                                               */
+            DCD  USB_DMA_Handler;            /*!< 38 USB DMA interrupt                                                      */
+            DCD  I2S_Handler;                /*!< 39 I2S interrupt                                                          */
+            DCD  TIMER2_Handler;             /*!< 40 TIMER 2 interrupt                                                      */
+            DCD  SPI1_Handler;               /*!< 42 interrupt                                                              */
+            DCD  RTC_Handler;                /*!< 43 Real Time Clock interrupt                                              */
+            DCD  BEEP_Handler;               /*!< 45 Beep interrupt                                                         */
+            DCD  LCD_Handler;                /*!< 46 LCD Controller interrupt                                               */
+            DCD  GPIOA_Handler;              /*!< 47 interrupt                                                              */
+            DCD  GPIOB_Handler;              /*!< 48 interrupt                                                              */
+            DCD  AFE_CAPTURE_Handler;        /*!< 50 Analog Front End Capture interrupt                                     */
+            DCD  AFE_GENERATE_Handler;       /*!< 51 Analog Front End Generation interrupt                                  */
+            DCD  AFE_CMD_FIFO_Handler;       /*!< 52 Analog Front End FIFO CMD interrupt                                    */
+            DCD  AFE_DATA_FIFO_Handler;      /*!< 53 Analog Front End FIFO DATA interrupt                                   */
+            DCD  GP_FLASH_Handler;           /*!< 55 Flash EEPROM interrupt                                                 */
+            DCD  RAND_Handler;               /*!< 58 Random Bit Generator interrupt                                         */
+            DCD  PDI_Handler;                /*!< 59 Paraller Display Interface interrupt                                   */
 
-                SPACE    (214 * 4)                           ; Interrupts 10 .. 224 are left out
+                SPACE    (163 * 4)                           ; Interrupts 60 .. 224 are left out
 __Vectors_End
 __Vectors_Size  EQU      __Vectors_End - __Vectors
 
@@ -138,17 +182,61 @@ $Handler_Name   PROC
                 Set_Default_Handler  PendSV_Handler
                 Set_Default_Handler  SysTick_Handler
 
-                Set_Default_Handler  Interrupt0_Handler
-                Set_Default_Handler  Interrupt1_Handler
-                Set_Default_Handler  Interrupt2_Handler
-                Set_Default_Handler  Interrupt3_Handler
-                Set_Default_Handler  Interrupt4_Handler
-                Set_Default_Handler  Interrupt5_Handler
-                Set_Default_Handler  Interrupt6_Handler
-                Set_Default_Handler  Interrupt7_Handler
-                Set_Default_Handler  Interrupt8_Handler
-                Set_Default_Handler  Interrupt9_Handler
-
+                Set_Default_Handler  WUT_Handler
+                Set_Default_Handler  EINT0_Handler
+                Set_Default_Handler  EINT1_Handler
+                Set_Default_Handler  EINT2_Handler
+                Set_Default_Handler  EINT3_Handler
+                Set_Default_Handler  EINT4_Handler
+                Set_Default_Handler  EINT5_Handler
+                Set_Default_Handler  EINT6_Handler
+                Set_Default_Handler  EINT7_Handler
+                Set_Default_Handler  EINT8_Handler
+                Set_Default_Handler  WDT_Handler
+                Set_Default_Handler  TIMER0_Handler
+                Set_Default_Handler  TIMER1_Handler
+                Set_Default_Handler  FLASH0_Handler
+                Set_Default_Handler  UART_Handler
+                Set_Default_Handler  SPI0_Handler
+                Set_Default_Handler  SPIH_Handler
+                Set_Default_Handler  I2CS_Handler
+                Set_Default_Handler  I2CM_Handler
+                Set_Default_Handler  DMA_ERR_Handler
+                Set_Default_Handler  DMA_SPIH_TX_Handler
+                Set_Default_Handler  DMA_SPIH_RX_Handler
+                Set_Default_Handler  DMA_SPI0_TX_Handler
+                Set_Default_Handler  DMA_SPI0_RX_Handler
+                Set_Default_Handler  DMA_SPI1_TX_Handler
+                Set_Default_Handler  DMA_SPI1_RX_Handler
+                Set_Default_Handler  DMA_UART_TX_Handler
+                Set_Default_Handler  DMA_UART_RX_Handler
+                Set_Default_Handler  DMA_I2CS_TX_Handler
+                Set_Default_Handler  DMA_I2CS_RX_Handler
+                Set_Default_Handler  DMA_I2CM_Handler
+                Set_Default_Handler  DMA_AFE_TX_Handler
+                Set_Default_Handler  DMA_AFE_RX_Handler
+                Set_Default_Handler  DMA_CRC_Handler
+                Set_Default_Handler  DMA_PDI_Handler
+                Set_Default_Handler  DMA_I2S_Handler
+                Set_Default_Handler  USB_WAKEUP_Handler
+                Set_Default_Handler  USB_CNTL_Handler
+                Set_Default_Handler  USB_DMA_Handler
+                Set_Default_Handler  I2S_Handler
+                Set_Default_Handler  TIMER2_Handler
+                Set_Default_Handler  SPI1_Handler
+                Set_Default_Handler  RTC_Handler
+                Set_Default_Handler  BEEP_Handler
+                Set_Default_Handler  LCD_Handler
+                Set_Default_Handler  GPIOA_Handler
+                Set_Default_Handler  GPIOB_Handler
+                Set_Default_Handler  AFE_CAPTURE_Handler
+                Set_Default_Handler  AFE_GENERATE_Handler
+                Set_Default_Handler  AFE_CMD_FIFO_Handler
+                Set_Default_Handler  AFE_DATA_FIFO_Handler
+                Set_Default_Handler  GP_FLASH_Handler
+                Set_Default_Handler  RAND_Handler
+                Set_Default_Handler  PDI_Handler
+				
                 ALIGN
 
 

@@ -1,7 +1,7 @@
 ;/**************************************************************************//**
-; * @file     startup_<Device>.s
+; * @file     startup_ADuCM350.s
 ; * @brief    CMSIS Cortex-M# Core Device Startup File for
-; *           Device <Device>
+; *           Device ADuCM350
 ; * @version  V5.3.1
 ; * @date     09. July 2018
 ; ******************************************************************************/
@@ -76,19 +76,62 @@ __vector_table_0x1c
                 DCD      SysTick_Handler                     ;  -1 SysTick Handler
 
         ; External Interrupts
-; ToDo:  Add here the vectors for the device specific external interrupts handler
-                DCD      Interrupt0_Handler                  ;   0 Interrupt 0
-                DCD      Interrupt1_Handler                  ;   1 Interrupt 1
-                DCD      Interrupt2_Handler                  ;   2 Interrupt 2
-                DCD      Interrupt3_Handler                  ;   3 Interrupt 3
-                DCD      Interrupt4_Handler                  ;   4 Interrupt 4
-                DCD      Interrupt5_Handler                  ;   5 Interrupt 5
-                DCD      Interrupt6_Handler                  ;   6 Interrupt 6
-                DCD      Interrupt7_Handler                  ;   7 Interrupt 7
-                DCD      Interrupt8_Handler                  ;   8 Interrupt 8
-                DCD      Interrupt9_Handler                  ;   9 Interrupt 9
+                DCD  WUT_Handler;                
+                DCD  EINT0_Handler;              
+                DCD  EINT1_Handler;              
+                DCD  EINT2_Handler;              
+                DCD  EINT3_Handler;              
+                DCD  EINT4_Handler;              
+                DCD  EINT5_Handler;              
+                DCD  EINT6_Handler;              
+                DCD  EINT7_Handler;              
+                DCD  EINT8_Handler;              
+                DCD  WDT_Handler;                
+                DCD  TIMER0_Handler;             
+                DCD  TIMER1_Handler;             
+                DCD  FLASH0_Handler;             
+                DCD  UART_Handler;               
+                DCD  SPI0_Handler;               
+                DCD  SPIH_Handler;               
+                DCD  I2CS_Handler;               
+                DCD  I2CM_Handler;               
+                DCD  DMA_ERR_Handler;            
+                DCD  DMA_SPIH_TX_Handler;        
+                DCD  DMA_SPIH_RX_Handler;        
+                DCD  DMA_SPI0_TX_Handler;        
+                DCD  DMA_SPI0_RX_Handler;        
+                DCD  DMA_SPI1_TX_Handler;        
+                DCD  DMA_SPI1_RX_Handler;        
+                DCD  DMA_UART_TX_Handler;        
+                DCD  DMA_UART_RX_Handler;        
+                DCD  DMA_I2CS_TX_Handler;        
+                DCD  DMA_I2CS_RX_Handler;        
+                DCD  DMA_I2CM_Handler;           
+                DCD  DMA_AFE_TX_Handler;         
+                DCD  DMA_AFE_RX_Handler;         
+                DCD  DMA_CRC_Handler;            
+                DCD  DMA_PDI_Handler;            
+                DCD  DMA_I2S_Handler;            
+                DCD  USB_WAKEUP_Handler;         
+                DCD  USB_CNTL_Handler;           
+                DCD  USB_DMA_Handler;            
+                DCD  I2S_Handler;                
+                DCD  TIMER2_Handler;             
+                DCD  SPI1_Handler;               
+                DCD  RTC_Handler;                
+                DCD  BEEP_Handler;               
+                DCD  LCD_Handler;                
+                DCD  GPIOA_Handler;              
+                DCD  GPIOB_Handler;              
+                DCD  AFE_CAPTURE_Handler;        
+                DCD  AFE_GENERATE_Handler;       
+                DCD  AFE_CMD_FIFO_Handler;       
+                DCD  AFE_DATA_FIFO_Handler;      
+                DCD  GP_FLASH_Handler;           
+                DCD  RAND_Handler;               
+                DCD  PDI_Handler;                
 
-                DS32    (214)                                ; Interrupts 10 .. 224 are left out
+                DS32    (163)                                ; Interrupts 60 .. 224 are left out
 __Vectors_End
 
 __Vectors       EQU      __vector_table

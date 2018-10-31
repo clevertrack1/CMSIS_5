@@ -1,7 +1,7 @@
 /**************************************************************************//**
- * @file     startup_<Device>.S
+ * @file     startup_ADuCM350.S
  * @brief    CMSIS Cortex-M# Core Device Startup File for
- *           Device <Device>
+ *           Device ADuCM350
  * @version  V5.3.1
  * @date     09. July 2018
  ******************************************************************************/
@@ -93,19 +93,62 @@ __Vectors:
                 .long    SysTick_Handler                    /*  -1 SysTick Handler */
 
 	/* External interrupts */
-/* ToDo:  Add here the vectors for the device specific external interrupts handler */
-                .long    Interrupt0_Handler                 /*   0 Interrupt 0 */
-                .long    Interrupt1_Handler                 /*   1 Interrupt 1 */
-                .long    Interrupt2_Handler                 /*   2 Interrupt 2 */
-                .long    Interrupt3_Handler                 /*   3 Interrupt 3 */
-                .long    Interrupt4_Handler                 /*   4 Interrupt 4 */
-                .long    Interrupt5_Handler                 /*   5 Interrupt 5 */
-                .long    Interrupt6_Handler                 /*   6 Interrupt 6 */
-                .long    Interrupt7_Handler                 /*   7 Interrupt 7 */
-                .long    Interrupt8_Handler                 /*   8 Interrupt 8 */
-                .long    Interrupt9_Handler                 /*   9 Interrupt 9 */
+                .long        WUT_Handler                 /*    0  Wake Up Timer interrupt */ 
+                .long        EINT0_Handler               /*    1  External Interrupt 0 */ 
+                .long        EINT1_Handler               /*    2  External Interrupt 1 */ 
+                .long        EINT2_Handler               /*    3  External Interrupt 2 */ 
+                .long        EINT3_Handler               /*    4  External Interrupt 3 */ 
+                .long        EINT4_Handler               /*    5  External Interrupt 4 */ 
+                .long        EINT5_Handler               /*    6  External Interrupt 5 */ 
+                .long        EINT6_Handler               /*    7  External Interrupt 6 */ 
+                .long        EINT7_Handler               /*    8  External Interrupt 7 */ 
+                .long        EINT8_Handler               /*    9  External Interrupt 8 */ 
+                .long        WDT_Handler                 /*    10 WDT Interrupt */ 
+                .long        TIMER0_Handler              /*    11 Timer interrupt */ 
+                .long        TIMER1_Handler              /*    12 Timer 1 Interrupt */ 
+                .long        FLASH0_Handler              /*    13 Flash Controller Interrupt */ 
+                .long        UART_Handler                /*    14 interrupt */ 
+                .long        SPI0_Handler                /*    15 SPI 0 interrupt */ 
+                .long        SPIH_Handler                /*    16 interrupt */ 
+                .long        I2CS_Handler                /*    17 I2C 0 slave interrupt */ 
+                .long        I2CM_Handler                /*    18 I2C 0 master interrupt */ 
+                .long        DMA_ERR_Handler             /*    19 DMA interrupt */ 
+                .long        DMA_SPIH_TX_Handler         /*    20 DMA Ch 0 interrupt */ 
+                .long        DMA_SPIH_RX_Handler         /*    21 DMA Ch 1 interrupt */ 
+                .long        DMA_SPI0_TX_Handler         /*    22 DMA Ch 2 interrupt */ 
+                .long        DMA_SPI0_RX_Handler         /*    23 DMA Ch 3 interrupt */ 
+                .long        DMA_SPI1_TX_Handler         /*    24 DMA Ch 4 interrupt */ 
+                .long        DMA_SPI1_RX_Handler         /*    25 DMA Ch 5 interrupt */ 
+                .long        DMA_UART_TX_Handler         /*    26 DMA Ch 6 interrupt */ 
+                .long        DMA_UART_RX_Handler         /*    27 DMA Ch 7 interrupt */ 
+                .long        DMA_I2CS_TX_Handler         /*    28 DMA Ch 8 interrupt */ 
+                .long        DMA_I2CS_RX_Handler         /*    29 DMA Ch 9 interrupt */ 
+                .long        DMA_I2CM_Handler            /*    30 DMA Ch 10 interrupt */
+                .long    	DMA_AFE_TX_Handler          /*    31 DMA Ch 11 interrupt */ 
+                .long        DMA_AFE_RX_Handler          /*    32 DMA Ch 12 interrupt */ 
+                .long        DMA_CRC_Handler             /*    33 DMA Ch 13 interrupt */ 
+                .long        DMA_PDI_Handler             /*    34 DMA Ch 14 interrupt */ 
+                .long        DMA_I2S_Handler             /*    35 DMA Ch 15 interrupt */ 
+                .long        USB_WAKEUP_Handler          /*    36 USB Wakeup interrupt */ 
+                .long        USB_CNTL_Handler            /*    37 USB Controller interrupt */ 
+                .long        USB_DMA_Handler             /*    38 USB DMA interrupt */ 
+                .long        I2S_Handler                 /*    39 I2S interrupt */ 
+                .long        TIMER2_Handler              /*    40 TIMER 2 interrupt */ 
+                .long        SPI1_Handler                /*    42 interrupt */ 
+                .long        RTC_Handler                 /*    43 Real Time Clock interrupt */ 
+                .long        BEEP_Handler                /*    45 Beep interrupt */ 
+                .long        LCD_Handler                 /*    46 LCD Controller interrupt */ 
+                .long        GPIOA_Handler               /*    47 interrupt */ 
+                .long        GPIOB_Handler               /*    48 interrupt */ 
+                .long        AFE_CAPTURE_Handler         /*    50 Analog Front End Capture interrupt */ 
+                .long        AFE_GENERATE_Handler        /*    51 Analog Front End Generation interrupt */ 
+                .long        AFE_CMD_FIFO_Handler        /*    52 Analog Front End FIFO CMD interrupt */ 
+                .long        AFE_DATA_FIFO_Handler       /*    53 Analog Front End FIFO DATA interrupt */ 
+                .long        GP_FLASH_Handler            /*    55 Flash EEPROM interrupt */ 
+                .long        RAND_Handler                /*    58 Random Bit Generator interrupt */ 
+                .long        PDI_Handler                 /*    59 Paraller Display Interface interrupt */ 
 
-                .space   (214 * 4)                          /* Interrupts 10 .. 224 are left out */
+                .space   (163 * 4)                          /* Interrupts 10 .. 224 are left out */
 __Vectors_End:
                 .equ     __Vectors_Size, __Vectors_End - __Vectors
                 .size    __Vectors, . - __Vectors
@@ -276,16 +319,60 @@ Default_Handler:
                 Set_Default_Handler  PendSV_Handler
                 Set_Default_Handler  SysTick_Handler
 
-                Set_Default_Handler  Interrupt0_Handler
-                Set_Default_Handler  Interrupt1_Handler
-                Set_Default_Handler  Interrupt2_Handler
-                Set_Default_Handler  Interrupt3_Handler
-                Set_Default_Handler  Interrupt4_Handler
-                Set_Default_Handler  Interrupt5_Handler
-                Set_Default_Handler  Interrupt6_Handler
-                Set_Default_Handler  Interrupt7_Handler
-                Set_Default_Handler  Interrupt8_Handler
-                Set_Default_Handler  Interrupt9_Handler
+                Set_Default_Handler  WUT_Handler                 
+                Set_Default_Handler  EINT0_Handler               
+                Set_Default_Handler  EINT1_Handler               
+                Set_Default_Handler  EINT2_Handler               
+                Set_Default_Handler  EINT3_Handler               
+                Set_Default_Handler  EINT4_Handler               
+                Set_Default_Handler  EINT5_Handler               
+                Set_Default_Handler  EINT6_Handler               
+                Set_Default_Handler  EINT7_Handler               
+                Set_Default_Handler  EINT8_Handler               
+                Set_Default_Handler  WDT_Handler                 
+                Set_Default_Handler  TIMER0_Handler              
+                Set_Default_Handler  TIMER1_Handler              
+                Set_Default_Handler  FLASH0_Handler              
+                Set_Default_Handler  UART_Handler                
+                Set_Default_Handler  SPI0_Handler                
+                Set_Default_Handler  SPIH_Handler                
+                Set_Default_Handler  I2CS_Handler                
+                Set_Default_Handler  I2CM_Handler                
+                Set_Default_Handler  DMA_ERR_Handler             
+                Set_Default_Handler  DMA_SPIH_TX_Handler         
+                Set_Default_Handler  DMA_SPIH_RX_Handler         
+                Set_Default_Handler  DMA_SPI0_TX_Handler         
+                Set_Default_Handler  DMA_SPI0_RX_Handler         
+                Set_Default_Handler  DMA_SPI1_TX_Handler         
+                Set_Default_Handler  DMA_SPI1_RX_Handler         
+                Set_Default_Handler  DMA_UART_TX_Handler         
+                Set_Default_Handler  DMA_UART_RX_Handler         
+                Set_Default_Handler  DMA_I2CS_TX_Handler         
+                Set_Default_Handler  DMA_I2CS_RX_Handler         
+                Set_Default_Handler  DMA_I2CM_Handler            
+                Set_Default_Handler  DMA_AFE_TX_Handler          
+                Set_Default_Handler  DMA_AFE_RX_Handler          
+                Set_Default_Handler  DMA_CRC_Handler             
+                Set_Default_Handler  DMA_PDI_Handler             
+                Set_Default_Handler  DMA_I2S_Handler             
+                Set_Default_Handler  USB_WAKEUP_Handler          
+                Set_Default_Handler  USB_CNTL_Handler            
+                Set_Default_Handler  USB_DMA_Handler             
+                Set_Default_Handler  I2S_Handler                 
+                Set_Default_Handler  TIMER2_Handler              
+                Set_Default_Handler  SPI1_Handler                
+                Set_Default_Handler  RTC_Handler                 
+                Set_Default_Handler  BEEP_Handler                
+                Set_Default_Handler  LCD_Handler                 
+                Set_Default_Handler  GPIOA_Handler               
+                Set_Default_Handler  GPIOB_Handler               
+                Set_Default_Handler  AFE_CAPTURE_Handler         
+                Set_Default_Handler  AFE_GENERATE_Handler        
+                Set_Default_Handler  AFE_CMD_FIFO_Handler        
+                Set_Default_Handler  AFE_DATA_FIFO_Handler       
+                Set_Default_Handler  GP_FLASH_Handler            
+                Set_Default_Handler  RAND_Handler                
+                Set_Default_Handler  PDI_Handler 
 
 
                 .end
